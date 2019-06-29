@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "markdown" : "toaxml/components/index/index"
+  }
+}

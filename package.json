@@ -3,5 +3,8 @@
   "version": "0.0.2",
   "scripts": {
     "fmt": "npx prettier --write ./**/*.js"
+  },
+  "dependencies": {
+    "toaxml": "github:khs1994/toaxml"
   }
 }

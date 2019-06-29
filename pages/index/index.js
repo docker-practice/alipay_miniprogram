@@ -1,16 +1,16 @@
-let toaxml = require("towxml");
-let md = new toaxml();
-
 Page({
   data: {
     markdown: "",
-    test: "test"
+    test: "test",
+    light: true
   },
-  onLoad(query) {
+  async onLoad(query) {
     // 页面加载
     console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
 
-    let mdData = new Promise(resolve => {
+    my.showLoading({});
+
+    let markdown = await new Promise(resolve => {
       my.request({
         url:
           "https://gitee.com/docker_practice/miniprogram_ant/raw/master/SUMMARY.md",
@@ -21,11 +21,14 @@ Page({
       });
     });
 
-    mdData.then(res => {
-      let markdown = md.toJson(res, "markdown");
-      this.setData({
-        markdown
-      });
+    this.setData({
+      markdown
+    });
+    my.hideLoading({});
+  },
+  changeTheme() {
+    this.setData({
+      light: !this.data.light
     });
   },
   onReady() {
@@ -42,9 +45,11 @@ Page({
   },
   onTitleClick() {
     // 标题被点击
+    this.changeTheme();
   },
   onPullDownRefresh() {
     // 页面被下拉
+    this.changeTheme();
   },
   onReachBottom() {
     // 页面被拉到底部

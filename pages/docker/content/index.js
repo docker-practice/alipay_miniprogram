@@ -1,10 +1,8 @@
-let toaxml = require("towxml");
-let md = new toaxml();
-
 Page({
   data: {
     key: "",
-    markdown: {}
+    markdown: "",
+    light: true
   },
   async onLoad(query) {
     let key = query.key || undefined;
@@ -15,7 +13,7 @@ Page({
 
     my.showLoading({});
 
-    let mdData = await new Promise(resolve => {
+    let markdown = await new Promise(resolve => {
       my.request({
         url:
           "https://gitee.com/docker_practice/docker_practice/raw/master/" + key,
@@ -26,12 +24,19 @@ Page({
       });
     });
 
-    let markdown = md.toJson(mdData, "markdown");
-
     this.setData({
       markdown
     });
 
     my.hideLoading({});
+  },
+  changeTheme() {
+    this.setData({
+      light: !this.data.light
+    });
+  },
+  onTitleClick() {
+    // 标题被点击
+    this.changeTheme();
   }
 });
