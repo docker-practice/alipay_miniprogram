@@ -1,0 +1,7 @@
+{
+  "name": "",
+  "version": "0.0.2",
+  "scripts": {
+    "fmt": "npx prettier --write ./**/*.js"
+  }
+}

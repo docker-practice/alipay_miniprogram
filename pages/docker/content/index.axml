@@ -1,0 +1,2 @@
+<import src="towxml/entry.axml" />
+<template is="entry" data="{{...markdown}}" />

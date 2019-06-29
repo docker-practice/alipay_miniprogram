@@ -1,0 +1,10 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/docker/content/index",
+    "pages/book/index"
+  ],
+  "window": {
+    "defaultTitle": "Docker 从入门到实践"
+  }
+}
